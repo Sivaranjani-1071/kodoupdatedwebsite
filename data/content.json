@@ -1,0 +1,54 @@
+{
+  "banner": {
+    "text": "KodoWorks is now enrolling for the July 2026 batch  |  Limited seats  |  Scholarships available → Apply before 30th June 2026",
+    "ctaText": "Apply Now"
+  },
+
+"navbar": {
+  "logoImage": "/kodoworkslogo.png",
+  "logoWidthMobile": 98,
+  "logoHeightMobile": 84,
+  "logoWidthDesktop": 180,
+  "logoHeightDesktop": 146
+},
+  "hero": {
+    "headline": "Engineered for Careers That Actually Take Off.",
+    "subheadline":" KodoWorks Fellowship Programs combine live enterprise training, real-world projects, and a defined placement pathway — powered by ExpertsPro, a global technology company. "
+  },
+  "stats": [
+    { "value": "7", "label": "Fellowship Programs" },
+    { "value": "1:8", "label": "Mentor-to-Student Ratio" },
+    { "value": "390+", "label": "Hours of Live Instruction" },
+    { "value": "100%", "label": "Placement Support Across All Programs" }
+  ],
+  "form": {
+    "heading": "Start Your Career Conversation",
+    "fields": [
+      { "name": "name", "placeholder": "Full Name", "type": "text", "icon": "person" },
+      { "name": "email", "placeholder": "Email Address", "type": "email", "icon": "email" },
+      { "name": "phone", "placeholder": "", "type": "tel", "icon": "phone" },
+      {
+        "name": "program",
+        "placeholder": "Select a program",
+        "type": "select",
+        "icon": "question",
+        "options": [
+          "AI & Machine Learning",
+          "Data Science",
+          "Full Stack Development",
+          "Software Engineering",
+          "DevOps & Cloud Computing",
+          "Cybersecurity",
+          "Product Management"
+        ]
+      }
+    ],
+
+    "cta": "Talk to Our Team"
+  },
+  "footer": {
+    "phone": "080424 53955",
+    "ctaText": "Request a Callback"
+  }
+}
+
