@@ -1,4 +1,4 @@
-# Crio.Do Clone — Next.js 14
+# kodoworks — Next.js 14
 
 A pixel-perfect clone of the Crio.Do homepage built with Next.js 14 (App Router), TypeScript, and Tailwind CSS.
 
