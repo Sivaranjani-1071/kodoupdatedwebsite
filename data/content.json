@@ -1,25 +1,29 @@
 {
   "banner": {
-    "text": "KodoWorks is now enrolling for the July 2026 batch  |  Limited seats  |  Scholarships available → Apply before 30th June 2026",
+    "segments": {
+      "intro": "KodoWorks is now enrolling for the August 2026 batch",
+      "limitedSeats": "Limited seats",
+      "scholarships": "Scholarships available → Apply before 31st July 2026"
+    },
     "ctaText": "Apply Now"
   },
 
 "navbar": {
   "logoImage": "/kodoworkslogo.png",
-  "logoWidthMobile": 98,
+  "logoWidthMobile": 200,
   "logoHeightMobile": 84,
   "logoWidthDesktop": 180,
   "logoHeightDesktop": 146
 },
   "hero": {
-    "headline": "Engineered for Careers That Actually Take Off.",
-    "subheadline":" KodoWorks Fellowship Programs combine live enterprise training, real-world projects, and a defined placement pathway — powered by ExpertsPro, a global technology company. "
+    "headline": "The Technology Career Path Built by an IT Company.",
+    "subheadline": "KodoWorks Fellowship Programs combine live industry training, real-world projects, and a defined placement pathway — built by a technology company, not a training academy."
   },
   "stats": [
     { "value": "7", "label": "Fellowship Programs" },
-    { "value": "1:8", "label": "Mentor-to-Student Ratio" },
+    { "value": "1:8", "label": "Mentor-to-Fellow Ratio" },
     { "value": "390+", "label": "Hours of Live Instruction" },
-    { "value": "100%", "label": "Placement Support Across All Programs" }
+    { "value": "100%", "label": "Placement Support" }
   ],
   "form": {
     "heading": "Start Your Career Conversation",

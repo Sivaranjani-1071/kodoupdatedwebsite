@@ -9,16 +9,24 @@
   padding: 0;
 }
 
-html, body {
+html {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* overflow-x lives on body only (not html) — Safari breaks position:sticky
+   descendants when html/body use overflow:clip or when both axes end up
+   non-visible, so this must stay hidden on the x-axis only. */
+body {
   width: 100%;
   max-width: 100%;
   overflow-x: hidden;
 }
 
-#__next {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden;
+button {
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 h1, h2, h3, h4, h5, h6 {
