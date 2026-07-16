@@ -1,4 +1,4 @@
-import { Cpu, Cloud, ShieldCheck, ChevronRight, GraduationCap } from "lucide-react";
+import { Cpu, Cloud, ShieldCheck, ChevronRight, GraduationCap, Handshake, Target } from "lucide-react";
 
 /**
  * ResultsCard — bento-grid stat showcase: four soft rose-pink tiles in a
@@ -19,7 +19,7 @@ const TILES = [
   {
     value: "7",
     label: "Fellowship Programs",
-    desc: "Across AI, Cloud, Data, Security & More",
+    desc: "For eligible fellows, every cohort.",
   },
   {
     value: "1:8",
@@ -27,26 +27,27 @@ const TILES = [
     desc: "Real mentors, small cohorts.",
   },
   {
-    value: "390+",
-    label: "Hours of Live Instruction",
+    value: "150+",
+    label: "Hiring Partners",
+   desc: " Actively hiring, right now.",
   },
   {
-    value: "80%+",
-    label: "Score Unlocks Guaranteed Placement",
+    value: "95%",
+    label: "Placement Rate",
     pillText: "Guaranteed",
   },
 ];
 
 const HERO = {
   value: "100%",
-  headline: "Built and Delivered by a Practising Technology Company",
-  footer: "A technology company's fellowship — not a training academy's.",
+  headline: "Built and Delivered by a Leading Technology Company",
+  footer: "A technology company's fellowship.",
 };
 
 function MiniBars() {
   const heights = [30, 45, 60, 78, 95];
   return (
-    <div className="mt-5 flex items-end gap-1.5" aria-hidden="true">
+    <div className="flex items-end gap-1.5" aria-hidden="true">
       {heights.map((h, i) => (
         <div
           key={i}
@@ -95,7 +96,7 @@ function ArrowButton({ bg = "#141414" }: { bg?: string }) {
 
 export default function ResultsCard() {
   return (
-    <section className="w-full bg-white py-6 sm:py-8 md:py-12 lg:py-16">
+    <section className="w-full bg-white py-12">
       <style
         dangerouslySetInnerHTML={{
           __html: `
@@ -167,18 +168,24 @@ export default function ResultsCard() {
             className="bento-fade-up relative flex sm:min-h-[200px] flex-col rounded-[28px] p-6 sm:p-7 lg:col-span-4 lg:col-start-1 lg:row-start-2"
             style={{ backgroundColor: TILE_BG[2], animationDelay: "180ms" }}
           >
-            <div>
-              <div
-                className="font-heading text-5xl font-extrabold tracking-tight sm:text-6xl"
-                style={{ color: NUMBER_COLOR }}
-              >
-                {TILES[2].value}
-              </div>
-              <p className="mt-2 text-base font-semibold" style={{ color: LABEL_COLOR }}>
-                {TILES[2].label}
+            <Handshake size={20} style={{ color: ICON_COLOR }} aria-hidden="true" />
+            <div className="mt-6 flex items-end justify-between gap-4">
+              <div>
+                <div
+                  className="font-heading text-5xl font-extrabold tracking-tight sm:text-6xl"
+                  style={{ color: NUMBER_COLOR }}
+                >
+                  {TILES[2].value}
+                </div>
+                <p className="mt-2 text-base font-semibold" style={{ color: LABEL_COLOR }}>
+                  {TILES[2].label}
+                </p>
+                   <p className="mt-3 text-sm leading-snug" style={{ color: NUMBER_COLOR, opacity: 0.6 }}>
+                {TILES[2].desc}
               </p>
+              </div>
+              <MiniBars />
             </div>
-            <MiniBars />
           </div>
 
           {/* Tile 4 */}
@@ -186,7 +193,8 @@ export default function ResultsCard() {
             className="bento-fade-up relative flex sm:min-h-[200px] flex-col rounded-[28px] p-6 sm:p-7 lg:col-span-3 lg:col-start-5 lg:row-start-2"
             style={{ backgroundColor: TILE_BG[3], animationDelay: "270ms" }}
           >
-            <div className="flex justify-end">
+            <div className="flex items-start justify-between">
+              <Target size={20} style={{ color: ICON_COLOR }} aria-hidden="true" />
               <span
                 className="rounded-full px-3 py-1 text-xs font-semibold"
                 style={{ backgroundColor: PILL_BG, color: "#FFFFFF" }}

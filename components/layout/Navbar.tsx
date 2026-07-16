@@ -13,8 +13,9 @@ const defaultNavbar = {
   logoHeightMobile: 64,
   logoWidthDesktop: 72,
   logoHeightDesktop: 64,
-  links: ['Fellowship Programs', 'For Colleges', 'Corporate Training', 'Hire from Kodo', 'Blog'],
+  links: ['Fellowship Programs', 'For Colleges', 'For Corporates Training', 'For Recruiters', 'Blog'],
   cta: 'Contact Us',
+  
 }
 
 // ─── PER-LINK HOVER COLORS ──────────────────────────────────────────────────
@@ -387,16 +388,15 @@ export default function Navbar() {
                   })}
                 </nav>
 
-                <a
-                  href="/#hero-form"
-                  onClick={(e) => { e.preventDefault(); scrollToHeroForm() }}
+                <Link
+                  href="/contact"
                   className="flex items-center gap-1.5 rounded-full border-[1.5px] border-[#1A1A1A] text-[#1A1A1A] font-bold text-[13px] xl:text-[15px] pl-4 pr-3 xl:pl-5 xl:pr-3.5 py-2 xl:py-2.5 hover:bg-[#1A1A1A] hover:text-white transition-colors flex-shrink-0"
                 >
                   {navbar.cta}
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M5 3L9 7L5 11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                </a>
+                </Link>
               </div>
 
               {/* Mobile menu button */}
@@ -471,16 +471,16 @@ export default function Navbar() {
                   </a>
                 ))}
 
-                <a
-                  href="/#hero-form"
-                  onClick={(e) => { e.preventDefault(); setOpen(false); scrollToHeroForm() }}
+                <Link
+                  href="/contact"
+                  onClick={() => setOpen(false)}
                   className="flex items-center justify-center gap-1.5 rounded-full border-[1.5px] border-[#1A1A1A] text-[#1A1A1A] font-bold text-[15px] px-5 py-2.5 mt-3 hover:bg-[#1A1A1A] hover:text-white transition-colors"
                 >
                   {navbar.cta}
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                     <path d="M5 3L9 7L5 11" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
-                </a>
+                </Link>
               </div>
             )}
           </div>

@@ -77,13 +77,12 @@ const rows = [
 const HEADER_BG = "rgb(252 250 204)";
 const KODO_CELL_BG = "rgb(255 254 239 / 50%)";
 
-/* Brand gradient — highlights the "KodoWorks" column header at the top */
-const KODO_GRADIENT =
-  "linear-gradient(135deg, #ffe380 0%, #ffcc99 50%, #ffb3b3 100%)";
+/* Brand color — highlights the "KodoWorks" column header at the top */
+const KODO_GRADIENT = "#ffc90047";
 
 export default function CommunitySection() {
   return (
-    <section className="relative w-full overflow-hidden px-4 py-6 sm:px-6 sm:py-8 md:px-10 md:py-12 lg:px-16 lg:py-16 xl:px-20">
+    <section className="relative w-full overflow-hidden px-4 py-12 sm:px-6 md:px-10 lg:px-16 xl:px-20">
       {/* Decorative background layer */}
       <div className="pointer-events-none absolute inset-0">
         <div
@@ -108,7 +107,7 @@ export default function CommunitySection() {
             The Difference
           </span>
           <h2 className="mt-4 text-2xl font-extrabold leading-tight text-slate-900 sm:text-3xl md:text-4xl">
-            Built by an IT Company. Not an Academy.
+           Engineering-Led, Not Classroom-Led
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-slate-500 sm:text-base">
             Most training providers teach technology. KodoWorks practices it — and that
@@ -127,22 +126,22 @@ export default function CommunitySection() {
               className="grid grid-cols-[1.1fr_1.2fr_1.2fr]"
               style={{ backgroundColor: HEADER_BG }}
             >
-              <div className="flex items-center px-6 py-3 lg:px-8">
+              <div className="flex items-center justify-center px-6 py-3 text-center lg:px-8">
                 <span className="text-sm font-bold text-slate-900 lg:text-base">
                   Feature
                 </span>
               </div>
               <div
-                className="flex items-center px-5 py-3"
-                style={{ background: KODO_GRADIENT }}
+                className="flex items-center justify-center px-5 py-3 text-center"
+                style={{ backgroundColor: KODO_GRADIENT }}
               >
                 <span className="text-sm font-extrabold text-slate-900 lg:text-base">
                   KodoWorks
                 </span>
               </div>
-              <div className="flex items-center px-5 py-3">
+              <div className="flex items-center justify-center px-5 py-3 text-center">
                 <span className="text-sm font-bold text-slate-900 lg:text-base">
-                  Typical Academy
+                  Typical Training
                 </span>
               </div>
             </div>

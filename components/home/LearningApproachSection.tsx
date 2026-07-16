@@ -41,8 +41,8 @@ import { scrollToHeroForm } from '@/lib/scrollToHeroForm'
 const approach = [
   {
     icon: Code2,
-    image: '/CardOne.webp',
-    heading: 'Live Industry Projects',
+    image: '/three-1.png',
+    heading: 'Engagements on Live Client Work',
     description:
       'Every program is structured around real project work — not simulated case studies or sample datasets.',
     accentColor: '#fb275d',
@@ -50,8 +50,8 @@ const approach = [
   },
   {
     icon: UserCheck,
-    image: '/CardTwo.webp',
-    heading: 'Practitioner-Led Mentorship',
+    image: '/three-5.png',
+    heading: 'Mentorship from Corporate Leaders',
     description:
       'Mentors are working engineers who build and ship systems for clients — not full-time trainers reading from a curriculum.',
     accentColor: '#c99a02',
@@ -59,8 +59,8 @@ const approach = [
   },
   {
     icon: Target,
-    image: '/CardOne.webp',
-    heading: 'A Placement Pathway, Not a Promise',
+    image: '/three-4.png',
+    heading: 'Structured Placement Outcomes',
     description:
       'Every program comes with a transparent, score-based outcome — fellows know exactly what result unlocks what opportunity.',
     accentColor: '#00ca72',
@@ -68,8 +68,8 @@ const approach = [
   },
   {
     icon: Users,
-    image: '/CardTwo.webp',
-    heading: 'Small Batches, Real Attention',
+    image: '/three-3.png',
+    heading: 'Low Mentor-to-Fellow\nRatios',
     description:
       'A 1:8 mentor-to-fellow ratio means feedback on your code, not just your attendance.',
     accentColor: '#2563EB',
@@ -77,8 +77,8 @@ const approach = [
   },
   {
     icon: FileCheck2,
-    image: '/CardOne.webp',
-    heading: 'Projects That Go on Your Resume',
+    image: '/three-2.png',
+    heading: 'Demonstrable, Portfolio-Ready Work',
     description:
       'Every fellow leaves with deployed, demonstrable work — not just a certificate of completion.',
     accentColor: '#7C3AED',
@@ -86,8 +86,8 @@ const approach = [
   },
   {
     icon: Rocket,
-    image: '/CardTwo.webp',
-    heading: 'Built by People Who Ship Software',
+    image: '/three-6.png',
+    heading: 'Curriculum Designed by Engineers',
     description:
       'The curriculum is designed and reviewed by practising engineers, updated as the technology itself changes.',
     accentColor: '#EA580C',
@@ -215,7 +215,7 @@ export default function LearningApproachSection() {
   }
 
   return (
-    <section className="w-full bg-white py-6 sm:py-8 md:py-12 lg:py-16 overflow-hidden">
+    <section className="w-full bg-white py-12 overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
 
         {/* Heading */}
@@ -281,13 +281,13 @@ export default function LearningApproachSection() {
                 >
                   {/* Image or icon */}
                   {item.image ? (
-                    <div className="w-full h-[110px] sm:h-[130px] flex items-center justify-center mb-4 sm:mb-5">
+                    <div className="w-full h-[160px] sm:h-[200px] flex items-center justify-center mb-4 sm:mb-5">
                       <Image
                         src={item.image}
                         alt={isClone ? '' : item.heading}
-                        width={140}
-                        height={130}
-                        className="object-contain max-h-full"
+                        width={240}
+                        height={200}
+                        className="object-contain max-h-full max-w-full"
                       />
                     </div>
                   ) : (
@@ -301,7 +301,7 @@ export default function LearningApproachSection() {
 
                   {/* Heading */}
                   <h3
-                    style={{ color: item.accentColor }}
+                    style={{ color: item.accentColor, whiteSpace: 'pre-line' }}
                     className="text-base sm:text-lg font-bold mb-2"
                   >
                     {item.heading}

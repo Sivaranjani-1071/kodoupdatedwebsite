@@ -6,87 +6,34 @@ import { useRef, useEffect, useState } from 'react'
 // Content (move this into content.json / data.json
 // if you're following the existing content-source pattern)
 // ---------------------------------------------
-const toolsContent = {
-  heading: "Trained on the Tools Powering the Future of Work",
+const certificationsContent = {
+  heading: "Industry-Recognized Certifications Within Reach",
   subheading:
-    "Every KodoWorks fellow builds hands-on experience with the platforms and technologies that enterprise teams rely on every day.",
-  tools: [
-    {
-      name: "Python",
-      slug: "python",
-      color: "3776AB",
-    },
-    {
-      name: "AWS",
-      slug: "amazonaws",
-      color: "232F3E",
-      localSrc: "/Course logo 21.png",
-    },
-    {
-      name: "Google Cloud",
-      slug: "googlecloud",
-      color: "4285F4",
-    },
-    {
-      name: "Kubernetes",
-      slug: "kubernetes",
-      color: "326CE5",
-    },
-    {
-      name: "Docker",
-      slug: "docker",
-      color: "2496ED",
-    },
-    {
-      name: "Tableau",
-      slug: "tableau",
-      color: "E97627",
-      localSrc: "/Course logo 17.png",
-    },
-    {
-      name: "Power BI",
-      slug: "powerbi",
-      color: "F2C811",
-      localSrc: "/Course logo 15.png",
-    },
-    {
-      name: "TensorFlow",
-      slug: "tensorflow",
-      color: "FF6F00",
-    },
-    {
-      name: "OpenAI",
-      slug: "openai",
-      color: "412991",
-      localSrc: "/Course logo 12.png",
-    },
-    {
-      name: "Terraform",
-      slug: "terraform",
-      color: "844FBA",
-    },
-    {
-      name: "MongoDB",
-      slug: "mongodb",
-      color: "47A248",
-    },
+    "Every KodoWorks curriculum is mapped to globally recognized certification exams. Fellows can pursue these credentials at their own cost, backed by exam-aligned training built into the program.",
+  badges: [
+    { name: "AWS Certified Machine Learning – Specialty", src: "/badge-1.png" },
+    { name: "Microsoft Certified: Power BI Data Analyst Associate", src: "/badge-2.png" },
+    { name: "EC-Council Certified Ethical Hacker (CEH)", src: "/badge-3.png" },
+    { name: "AWS Certified Solutions Architect – Professional", src: "/badge-4.png" },
+    { name: "AWS Certified Developer – Associate", src: "/badge-5.png" },
+    { name: "Tableau Desktop Specialist", src: "/badge-6.png" },
+    { name: "ServiceNow Certified Application Developer", src: "/badge-7.webp" },
+    { name: "CompTIA Security+ Certified", src: "/badge-8.png" },
+    { name: "ServiceNow Certified System Administrator", src: "/badge-9.png" },
+    { name: "CNCF Official Content", src: "/badge-10.png" },
+    { name: "Google Data Analytics Certificate", src: "/badge11.png" },
+    { name: "Microsoft Copilot for M365 Achiever Badge – Foundational", src: "/badge12.png" },
   ],
 };
-
-// Official brand marks served via the Simple Icons CDN (free, no install needed).
-// Swap `iconUrl` for a locally hosted /public/icons/*.svg if you'd rather not
-// depend on an external CDN in production.
-const iconUrl = (slug: string, color: string) =>
-  `https://cdn.simpleicons.org/${slug}/${color}`;
 
 // Number of cards visible at once — used to size each slide relative to the
 // track container so the slider loops smoothly.
 const CARDS_VISIBLE = 6;
 
-function ToolsSlider({
-  tools,
+function BadgesSlider({
+  badges,
 }: {
-  tools: { name: string; slug: string; color: string; localSrc?: string }[];
+  badges: { name: string; src: string }[];
 }) {
   const trackRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -95,7 +42,7 @@ function ToolsSlider({
   const [itemWidth, setItemWidth] = useState(0);
   const speed = 0.5;
 
-  const loopedTools = [...tools, ...tools, ...tools];
+  const loopedBadges = [...badges, ...badges, ...badges];
 
   useEffect(() => {
     const container = containerRef.current;
@@ -117,7 +64,7 @@ function ToolsSlider({
     const track = trackRef.current;
     if (!track || itemWidth === 0) return;
 
-    const singleSetWidth = itemWidth * tools.length;
+    const singleSetWidth = itemWidth * badges.length;
 
     const step = () => {
       if (!track) return;
@@ -131,7 +78,7 @@ function ToolsSlider({
     return () => {
       if (animRef.current) cancelAnimationFrame(animRef.current);
     };
-  }, [itemWidth, tools.length]);
+  }, [itemWidth, badges.length]);
 
   const pause = () => {
     if (animRef.current) cancelAnimationFrame(animRef.current);
@@ -140,7 +87,7 @@ function ToolsSlider({
   const resume = () => {
     const track = trackRef.current;
     if (!track || itemWidth === 0) return;
-    const singleSetWidth = itemWidth * tools.length;
+    const singleSetWidth = itemWidth * badges.length;
 
     const step = () => {
       if (!track) return;
@@ -177,31 +124,26 @@ function ToolsSlider({
         ref={trackRef}
         className="flex items-stretch will-change-transform"
         style={{
-          width: itemWidth > 0 ? `${itemWidth * loopedTools.length}px` : 'max-content',
+          width: itemWidth > 0 ? `${itemWidth * loopedBadges.length}px` : 'max-content',
         }}
       >
-        {loopedTools.map((tool, i) => (
+        {loopedBadges.map((badge, i) => (
           <div
-            key={`${tool.slug}-${i}`}
+            key={`${badge.src}-${i}`}
             className="flex-shrink-0 px-3"
             style={{ width: itemWidth > 0 ? `${itemWidth}px` : 'auto' }}
           >
-            <div className="flex h-full flex-col items-center justify-center gap-3 rounded-xl border border-gray-100 bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-              <div className="relative h-10 w-10 overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={tool.localSrc || iconUrl(tool.slug, tool.color)}
-                  alt={`${tool.name} logo`}
-                  className={`h-10 w-10 object-contain ${
-                    tool.localSrc ? "scale-[1.85]" : ""
-                  }`}
-                  style={tool.localSrc ? { transformOrigin: "50% 40%" } : undefined}
-                  loading="lazy"
-                />
-              </div>
-              <span className="text-xs font-medium text-gray-700 md:text-sm">
-                {tool.name}
-              </span>
+            {/* Fixed-height box, same for every badge regardless of its
+                native aspect ratio — object-contain centers each image so
+                every card has identical top/bottom spacing. */}
+            <div className="flex h-32 sm:h-36 items-center justify-center rounded-xl border border-gray-100 bg-white p-4 shadow-sm transition-shadow hover:shadow-md">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={badge.src}
+                alt={badge.name}
+                className="h-full w-full object-contain"
+                loading="lazy"
+              />
             </div>
           </div>
         ))}
@@ -211,10 +153,10 @@ function ToolsSlider({
 }
 
 export default function ToolsPoweringFutureSection() {
-  const { heading, subheading, tools } = toolsContent;
+  const { heading, subheading, badges } = certificationsContent;
 
   return (
-    <section className="w-full bg-white py-6 sm:py-8 md:py-12 lg:py-16 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
+    <section className="w-full bg-white py-12 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
       <div className="mx-auto max-w-6xl text-center">
         <h2 className="text-2xl font-bold text-gray-900 md:text-4xl">
           {heading}
@@ -223,7 +165,7 @@ export default function ToolsPoweringFutureSection() {
           {subheading}
         </p>
 
-        <ToolsSlider tools={tools} />
+        <BadgesSlider badges={badges} />
       </div>
     </section>
   );

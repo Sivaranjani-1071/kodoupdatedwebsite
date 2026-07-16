@@ -147,7 +147,7 @@ export default function CrioGradsSection() {
   const rowTwoLoop = [...rowTwo, ...rowTwo]
 
   return (
-    <section className="w-full bg-white py-6 sm:py-8 md:py-12 lg:py-16 overflow-hidden">
+    <section className="w-full bg-white py-12 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <h2 className="text-center font-extrabold text-[#1A1A1A] leading-tight mb-8 sm:mb-12 text-2xl sm:text-3xl lg:text-4xl">
           Kodoworks

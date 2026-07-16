@@ -39,7 +39,7 @@ const columns = [
 
 export default function PlacementGuaranteeSection() {
   return (
-    <section className="w-full bg-white px-4 py-6 sm:px-6 sm:py-8 md:px-10 md:py-12 lg:px-16 lg:py-16 xl:px-20">
+    <section className="w-full bg-white px-4 py-12 sm:px-6 md:px-10 lg:px-16 xl:px-20">
       <div className="mx-auto max-w-5xl text-center">
         {/* Heading */}
         <h2 className="text-2xl font-extrabold leading-tight text-slate-900 sm:text-3xl md:text-4xl">

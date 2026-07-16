@@ -2,7 +2,7 @@
   "banner": {
     "segments": {
       "intro": "KodoWorks is now enrolling for the August 2026 batch",
-      "limitedSeats": "Limited seats",
+      "limitedSeats": "Limited seats → ",
       "scholarships": "Scholarships available → Apply before 31st July 2026"
     },
     "ctaText": "Apply Now"
@@ -17,13 +17,13 @@
 },
   "hero": {
     "headline": "The Technology Career Path Built by an IT Company.",
-    "subheadline": "KodoWorks Fellowship Programs combine live industry training, real-world projects, and a defined placement pathway — built by a technology company, not a training academy."
+    "subheadline": "KodoWorks is building the future of how talent meets industry, for individuals, institutions, and enterprises."
   },
   "stats": [
     { "value": "7", "label": "Fellowship Programs" },
-    { "value": "1:8", "label": "Mentor-to-Fellow Ratio" },
-    { "value": "390+", "label": "Hours of Live Instruction" },
-    { "value": "100%", "label": "Placement Support" }
+    { "value": "3-in-1", "label": "Talent Ecosystem" },
+    { "value": "100%", "label": "Industry\nBuilt" },
+    { "value": "360°", "label": "Career\nSupport" }
   ],
   "form": {
     "heading": "Start Your Career Conversation",
@@ -37,13 +37,13 @@
         "type": "select",
         "icon": "question",
         "options": [
-          "AI & Machine Learning",
-          "Data Science",
-          "Full Stack Development",
-          "Software Engineering",
-          "DevOps & Cloud Computing",
-          "Cybersecurity",
-          "Product Management"
+          "AI Engineering & Machine Learning",
+          "Generative AI for Professionals",
+          "Full-Stack Development with AI",
+          "Cloud Engineering & DevOps",
+          "ServiceNow & Enterprise Platform Engineering",
+          "Cybersecurity & Ethical Hacking",
+          "NextGen Data Science & Analytics"
         ]
       }
     ],

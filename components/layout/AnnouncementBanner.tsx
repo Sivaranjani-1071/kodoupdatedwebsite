@@ -16,9 +16,9 @@ export default function AnnouncementBanner() {
           <span className="hidden sm:inline">
             | {banner.segments.limitedSeats}{' '}
           </span>
-          |{' '}
-          {banner.segments.scholarships}{' '}
-          |{' '}
+          
+         
+          
           <a
             href="/#hero-form"
             onClick={(e) => { e.preventDefault(); scrollToHeroForm() }}

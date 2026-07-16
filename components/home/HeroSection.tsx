@@ -6,7 +6,7 @@ export default function HeroSection() {
 
   return (
     <section className="flex w-full items-center bg-white min-h-[480px] sm:min-h-[520px] lg:min-h-[560px]">
-      <div className="mx-auto w-full max-w-7xl px-4 pb-12 pt-6 sm:px-6 sm:pb-14 sm:pt-8 md:px-10 md:pb-16 md:pt-10 lg:px-16 lg:pb-20 lg:pt-12 xl:px-20">
+      <div className="mx-auto w-full max-w-7xl px-4 pb-12 pt-4 sm:px-6 sm:pb-14 sm:pt-6 md:px-10 md:pb-16 md:pt-8 lg:px-16 lg:pb-20 lg:pt-10 xl:px-20">
         <div className="flex flex-col items-center justify-between gap-8 lg:flex-row lg:items-center lg:gap-12">
 
           {/* Left Content */}
@@ -32,13 +32,13 @@ export default function HeroSection() {
             {/* Stats Grid: 2x2 on mobile, single row from sm up */}
             <div
               className="order-3 mt-6 grid w-full grid-cols-2 overflow-hidden rounded-3xl sm:mt-8 sm:flex sm:flex-nowrap"
-              style={{ backgroundColor: '#FDF1EF' }}
+              style={{ backgroundColor: '#fef9e2' }}
             >
               {stats.map((stat, i) => (
                 <div
                   key={i}
-                  className="relative flex flex-1 flex-col items-center justify-center px-4 py-8 text-center sm:py-10"
-                  style={{ minWidth: '100px' }}
+                  className="relative flex flex-1 flex-col items-center justify-center px-4 text-center"
+                  style={{ minWidth: '100px', paddingTop: '15px', paddingBottom: '15px' }}
                 >
                   {i !== 0 && (
                     <span
@@ -46,10 +46,14 @@ export default function HeroSection() {
                       style={{ backgroundColor: '#28282818' }}
                     />
                   )}
-                  <span className="text-3xl font-bold leading-tight tracking-tight text-[#111111] sm:text-4xl">
+                  <span
+                    style={{ fontSize: '26px' }}
+                    className="font-bold leading-tight tracking-tight text-[#111111]"
+                  >
                     {stat.value}
                   </span>
                   <span
+                    style={{ whiteSpace: 'pre-line' }}
                     className="mt-2 max-w-[140px] text-xs font-medium leading-snug text-[#111111] sm:text-sm"
                   >
                     {stat.label}

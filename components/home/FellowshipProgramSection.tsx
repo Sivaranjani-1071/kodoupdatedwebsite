@@ -16,9 +16,8 @@ import {
   BarChart3,
   Wand,
   Network,
-  Unlock,
   Calendar,
-  GraduationCap,
+  IndianRupee,
   Briefcase,
   type LucideIcon,
 } from 'lucide-react'
@@ -37,6 +36,8 @@ type Program = {
   highlights: string[]
   idealFor: string
   href: string
+  salaryRange: string
+  targetRoles: string
 }
 
 const programs: Program[] = [
@@ -53,6 +54,8 @@ const programs: Program[] = [
     ],
     idealFor: 'Fresh graduates and professionals moving into AI/ML roles',
     href: '/courses/ai-engineering-ml',
+    salaryRange: '₹6 LPA – ₹24 LPA',
+    targetRoles: 'AI Engineer, ML Engineer, Data Scientist',
   },
   {
     icon: Cloud,
@@ -67,6 +70,8 @@ const programs: Program[] = [
     ],
     idealFor: 'Professionals targeting Cloud, DevOps, or SRE roles',
     href: '/courses/cloud-devops',
+    salaryRange: '₹8 LPA – ₹28 LPA',
+    targetRoles: 'Cloud Engineer, DevOps Engineer, SRE',
   },
   {
     icon: Code2,
@@ -81,6 +86,8 @@ const programs: Program[] = [
     ],
     idealFor: 'Anyone targeting the highest-volume tech hiring market',
     href: '/courses/full-stack-development',
+    salaryRange: '₹5 LPA – ₹20 LPA',
+    targetRoles: 'Full-Stack Developer, Product Engineer',
   },
   {
     icon: ShieldCheck,
@@ -95,6 +102,8 @@ const programs: Program[] = [
     ],
     idealFor: 'Professionals moving into security analyst or SOC roles',
     href: '/courses/cybersecurity',
+    salaryRange: '₹5 LPA – ₹25 LPA',
+    targetRoles: 'SOC Analyst, Penetration Tester, Security Engineer',
   },
   {
     icon: BarChart3,
@@ -109,6 +118,8 @@ const programs: Program[] = [
     ],
     idealFor: 'Analysts, graduates, and non-tech professionals moving into data roles',
     href: '/courses/data-science',
+    salaryRange: '₹5 LPA – ₹18 LPA',
+    targetRoles: 'Data Analyst, Business Analyst, BI Developer',
   },
   {
     icon: Wand,
@@ -123,6 +134,8 @@ const programs: Program[] = [
     ],
     idealFor: 'Working professionals looking to upskill into GenAI-focused roles',
     href: '/courses/generative-ai',
+    salaryRange: '₹4 LPA – ₹24 LPA',
+    targetRoles: 'Marketing Professional, Finance Professional, Operations Professional, Management Professional',
   },
   {
     icon: Network,
@@ -137,6 +150,8 @@ const programs: Program[] = [
     ],
     idealFor: 'Professionals targeting ServiceNow development or enterprise ITSM roles',
     href: '/courses/servicenow-platform',
+    salaryRange: '₹6 LPA – ₹18 LPA',
+    targetRoles: 'ServiceNow Developer, ITSM Consultant, Platform Engineer',
   },
 ]
 
@@ -335,26 +350,23 @@ function FellowshipProgramCard({ program, theme }: { program: Program; theme: Th
 
       {/* Right: sidebar stats + buttons */}
       <div className="w-full lg:w-[260px] flex flex-col gap-3 flex-shrink-0">
-        <StatRow icon={Unlock} label="Trial Session" value="Free" theme={theme} />
         <StatRow icon={Calendar} label="Duration" value={program.duration} theme={theme} />
-        <StatRow icon={GraduationCap} label="Scholarships" value="Assured Scholarships" theme={theme} />
-        <StatRow icon={Briefcase} label="Career Services" value="Assured Referrals" theme={theme} />
+        <StatRow icon={IndianRupee} label="Salary Range" value={program.salaryRange} theme={theme} />
+        <StatRow icon={Briefcase} label="Target Roles" value={program.targetRoles} theme={theme} />
 
         <OutlineButton
           theme={theme}
-          href="/#hero-form"
-          onClick={(e) => { e.preventDefault(); scrollToHeroForm() }}
+          href={program.href}
           className="mt-1"
         >
-          Learn More
+          View Program
           <ChevronRight size={18} className="transition-transform duration-200 group-hover:translate-x-1" />
         </OutlineButton>
 
         <CtaButton
-          href="/#hero-form"
-          onClick={(e) => { e.preventDefault(); scrollToHeroForm() }}
+          href="/booknow"
         >
-          Apply Now
+          Contact Us
           <ChevronRight size={18} className="transition-transform duration-200 group-hover:translate-x-1" />
         </CtaButton>
       </div>
@@ -501,7 +513,7 @@ export default function FellowshipProgramSection() {
   const trailingBufferPx = lastCardHeight + LAST_CARD_ESCAPE_MARGIN_PX
 
   return (
-    <section className="w-full bg-white pt-6 sm:pt-8 md:pt-12 lg:pt-16 pb-6 sm:pb-8 md:pb-12 lg:pb-16 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
+    <section className="w-full bg-white py-12 px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20">
       <div className="max-w-6xl mx-auto">
         <h2 className="text-center font-extrabold text-[#1A1A1A] leading-tight mb-4 sm:mb-6 text-2xl sm:text-3xl lg:text-4xl">
           Fellowship Programs Engineered for Tomorrow's Careers

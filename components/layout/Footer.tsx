@@ -1,5 +1,5 @@
 "use client";
-import type { ReactNode } from "react";
+import { useState, type ReactNode } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { scrollToHeroForm } from "@/lib/scrollToHeroForm";
@@ -67,24 +67,11 @@ const Linkedin = (props: IconProps) => (
   </IconWrap>
 );
 
-const Youtube = (props: IconProps) => (
-  <IconWrap {...props}>
-    <rect x="2" y="5" width="20" height="14" rx="4" />
-    <path d="m10 9 5 3-5 3Z" fill="currentColor" stroke="none" />
-  </IconWrap>
-);
-
 const Instagram = (props: IconProps) => (
   <IconWrap {...props}>
     <rect x="3" y="3" width="18" height="18" rx="5" />
     <circle cx="12" cy="12" r="4" />
     <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-  </IconWrap>
-);
-
-const Twitter = (props: IconProps) => (
-  <IconWrap {...props}>
-    <path d="M22 5.8c-.7.3-1.5.6-2.3.7a4 4 0 0 0-6.9 3.6A11.4 11.4 0 0 1 3 4.6a4 4 0 0 0 1.2 5.3 4 4 0 0 1-1.8-.5 4 4 0 0 0 3.2 4 4 4 0 0 1-1.8.1 4 4 0 0 0 3.7 2.8A11.4 11.4 0 0 1 2 18.4a11.4 11.4 0 0 0 6.3 1.9c7.5 0 11.7-6.5 11.7-12v-.5A8.3 8.3 0 0 0 22 5.8Z" />
   </IconWrap>
 );
 
@@ -95,6 +82,13 @@ const Facebook = (props: IconProps) => (
 );
 
 /* ---- Updated footer link content ---- */
+
+
+const companyLinks = [
+  { label: "About KodoWorks", href: "/#hero-form" },
+  { label: "Careers", href: "/#hero-form" },
+  { label: "Contact Us", href: "/#hero-form" },
+];
 
 const programsLinks = [
   { label: "All Fellowship Programs", href: "/#hero-form" },
@@ -113,11 +107,7 @@ const institutionsLinks = [
   { label: "Hire from Kodo (Recruiters)", href: "/#hero-form" },
 ];
 
-const companyLinks = [
-  { label: "About KodoWorks", href: "/#hero-form" },
-  { label: "Careers", href: "/#hero-form" },
-  { label: "Contact Us", href: "/#hero-form" },
-];
+
 
 const legalLinks = [
   { label: "Privacy Policy", href: "#" },
@@ -126,29 +116,33 @@ const legalLinks = [
 ];
 
 const socialLinks = [
-  { icon: Linkedin, href: "#", label: "LinkedIn" },
-  { icon: Youtube, href: "#", label: "YouTube" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/kodoworks/", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/kodoworks.in/", label: "Instagram" },
+ 
 ];
 
 function FooterColumn({
   title,
   links,
   redirectToForm = true,
+  previewCount,
 }: {
   title: string;
   links: { label: string; href: string }[];
   redirectToForm?: boolean;
+  previewCount?: number;
 }) {
+  const [expanded, setExpanded] = useState(false);
+  const expandable = typeof previewCount === "number" && links.length > previewCount;
+  const visibleLinks = expandable && !expanded ? links.slice(0, previewCount) : links;
+
   return (
     <div>
-      <h3 className="text-xs font-bold uppercase tracking-wide text-neutral-900 mb-3">
+      <h3 className="text-xs font-bold uppercase tracking-wide text-neutral-900 mb-3 leading-snug sm:min-h-[2rem]">
         {title}
       </h3>
       <ul className="space-y-2.5">
-        {links.map((link) => (
+        {visibleLinks.map((link) => (
           <li key={link.label}>
             <Link
               href={link.href}
@@ -163,6 +157,17 @@ function FooterColumn({
             </Link>
           </li>
         ))}
+        {expandable && (
+          <li>
+            <button
+              type="button"
+              onClick={() => setExpanded((v) => !v)}
+              className="text-sm font-semibold text-neutral-900 hover:underline whitespace-nowrap"
+            >
+              {expanded ? "Read less" : "Read more"}
+            </button>
+          </li>
+        )}
       </ul>
     </div>
   );
@@ -171,54 +176,12 @@ function FooterColumn({
 export default function Footer() {
   return (
     <footer className="relative bg-[#FDEEE0]">
-      <div className="relative pt-14 sm:pt-20 px-6 sm:px-10 lg:px-16 pb-10">
+      <div className="relative pt-14 sm:pt-20 px-6 sm:px-10 lg:px-16 pb-2">
         <div className="max-w-7xl mx-auto">
           {/* Top: CTA promo (left) + brand & link columns (right) */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-10">
-            {/* Left: CTA */}
-            <div className="relative pb-20 sm:pb-28">
-              <h2 className="text-2xl sm:text-3xl font-extrabold leading-tight text-neutral-900 max-w-sm">
-                Ready to build your tech career?
-              </h2>
-              <button
-                onClick={scrollToHeroForm}
-                className="mt-6 inline-flex items-center gap-2.5 rounded-full bg-neutral-900 pl-2 pr-5 py-2 text-sm font-semibold text-white hover:bg-neutral-800 transition-colors"
-              >
-                <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white text-neutral-900">
-                  <IconWrap className="w-3.5 h-3.5">
-                    <path d="M5 12h14" />
-                    <path d="m13 6 6 6-6 6" />
-                  </IconWrap>
-                </span>
-                Talk to Our Team
-              </button>
-
-              {/* Decorative squiggle + sparkle */}
-              <svg
-                className="pointer-events-none absolute left-0 bottom-0 w-40 sm:w-full sm:max-w-xs h-auto text-white/70"
-                viewBox="0 0 320 160"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M0 10c60 0 60 60 120 60s60-70 120-70 60 90 80 90"
-                  stroke="currentColor"
-                  strokeWidth="10"
-                  strokeLinecap="round"
-                />
-              </svg>
-              <svg
-                className="pointer-events-none absolute left-[38%] bottom-8 w-8 h-8 text-pink-400"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
-              >
-                <path d="M12 0c1 6 3 8 9 9-6 1-8 3-9 9-1-6-3-8-9-9 6-1 8-3 9-9Z" />
-              </svg>
-            </div>
-
-            {/* Right: brand + contact + link columns */}
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-[0.6fr_1.4fr] gap-14 lg:gap-10">
+            {/* Left: brand + description */}
+            <div className="relative">
               <Link href="/" className="inline-flex items-baseline gap-1 mb-1">
                 <Image
                   src="/kodoworkslogo.png"
@@ -228,73 +191,62 @@ export default function Footer() {
                   priority
                 />
               </Link>
-              <p className="text-sm text-neutral-700 mb-5 max-w-sm leading-relaxed">
-                Live mentorship, real project work, and a defined placement pathway —
-                across the technology domains hiring the most right now.
+              <p className="text-sm text-neutral-700 max-w-sm leading-relaxed">
+                KodoWorks is a technology company connecting engineering practice with structured hiring outcomes across today's most in-demand domains.
               </p>
 
-              <div className="flex flex-col gap-3 mb-8 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-3">
+              {/* Contact details, stacked one by one below the paragraph */}
+              <div className="flex flex-col gap-3 mt-6">
                 <div className="flex gap-2">
                   <Home className="w-4 h-4 mt-0.5 shrink-0 text-neutral-900" />
                   <p className="text-sm text-neutral-800 leading-snug">
-                    Coimbatore, Tamil Nadu, India
+                    Bushido Towers, Coimbatore, India
                   </p>
                 </div>
                 <div className="flex gap-2">
                   <Headphones className="w-4 h-4 mt-0.5 shrink-0 text-neutral-900" />
-                  <div className="text-sm text-neutral-800">
+                  <div className="text-sm text-neutral-800 flex flex-col gap-0.5">
                     <a href="tel:+918925932839" className="hover:text-neutral-950">
                       +91 89259 32839
+                    </a>
+                    <a href="tel:+918925932841" className="hover:text-neutral-950">
+                      +91 89259 32841
                     </a>
                   </div>
                 </div>
                 <div className="flex gap-2">
                   <MessageCircle className="w-4 h-4 mt-0.5 shrink-0 text-neutral-900" />
                   <div className="text-sm text-neutral-800">
-                    <a href="mailto:kodo@expertspro.io" className="hover:text-neutral-950">
-                      kodo@expertspro.io
+                    <a href="mailto:contact@kodoworks.in" className="hover:text-neutral-950">
+                     contact@kodoworks.in
                     </a>
                   </div>
                 </div>
                 <div className="flex gap-2">
                   <Globe className="w-4 h-4 mt-0.5 shrink-0 text-neutral-900" />
                   <div className="text-sm text-neutral-800">
-                    <a href="https://www.kodotalent.com" className="hover:text-neutral-950">
-                      www.kodotalent.com
+                    <a href="https://www.kodoworks.in" className="hover:text-neutral-950">
+                      www.kodoworks.in
                     </a>
                   </div>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-8">
+       
+            </div>
+
+            {/* Right: link columns */}
+            <div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-x-6 gap-y-8">
+                <FooterColumn title="Company" links={companyLinks} />
                 <FooterColumn
-                  title="For Institutions & Companies"
+                  title="Institutions & Companies"
                   links={institutionsLinks}
                 />
-                <FooterColumn title="Company" links={companyLinks} />
+                <FooterColumn title="Programs" links={programsLinks} />
                 <FooterColumn title="Legal" links={legalLinks} redirectToForm={false} />
               </div>
             </div>
-          </div>
-
-          {/* Programs — full width, first 5 only, on one line */}
-          <div className="mt-10">
-            <h3 className="text-xs font-bold uppercase tracking-wide text-neutral-900 mb-3">
-              Programs
-            </h3>
-            <ul className="flex flex-wrap gap-x-6 gap-y-2.5">
-              {programsLinks.slice(0, 5).map((link) => (
-                <li key={link.label}>
-                  <Link
-                    href={link.href}
-                    onClick={(e) => { e.preventDefault(); scrollToHeroForm() }}
-                    className="text-sm text-neutral-800 hover:text-neutral-950 hover:underline whitespace-nowrap"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Divider */}
@@ -320,10 +272,11 @@ export default function Footer() {
       </div>
 
       {/* Callback banner */}
-      <div style={{ backgroundColor: "#000000", textAlign: "center", padding: "16px 24px" }}>
-        <p style={{ fontSize: "14px", color: "#ffffff" }}>
+      <div style={{ background: "linear-gradient(135deg, #ffe380 0%, #ffcc99 50%, #ffb3b3 100%)", textAlign: "center", padding: "16px 24px" }}>
+        <p style={{ fontSize: "14px", color: "#1A1A1A" }}>
           Feel free to reach out to us at{" "}
-          <span style={{ fontWeight: 700 }}>+91 89259 32839</span> and we&apos;ll
+          <span style={{ fontWeight: 700 }}>+91 89259 32839</span> /{" "}
+          <span style={{ fontWeight: 700 }}>+91 89259 32841</span> and we&apos;ll
           get in touch with you shortly.
         </p>
       </div>
